@@ -103,7 +103,10 @@ namespace LR2_CSaN
                         if ((response.Type == TYPE_ECHO_RESPONSE) || (response.Type == TYPE_TTL_EXCEEDED))
                         {
                             BufPoint = hopIP;
-                            Console.Write("{0, 5} ms", (timeEnd.Ticks - timeStart.Ticks) / 10000);
+                            if ((timeEnd.Ticks - timeStart.Ticks) / 10000 > 0)
+                                Console.Write("{0, 5} ms", (timeEnd.Ticks - timeStart.Ticks) / 10000);
+                            else 
+                                Console.Write("   <1 ms");
                             if (j == 2)
                             {
                                 string IP = hopIP.ToString();
