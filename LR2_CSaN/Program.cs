@@ -89,9 +89,9 @@ namespace LR2_CSaN
             {
                 EndPoint BufPoint = null;
                 Console.Write("{0, 3} ", i);
+                socket.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.IpTimeToLive, i);
                 for (int j = 0; j < 3; j++)
                 {
-                    socket.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.IpTimeToLive, i);
                     timeStart = DateTime.Now;
                     socket.SendTo(packet.getBytes(), packet.PacketSize, SocketFlags.None, destIP);
                     try
